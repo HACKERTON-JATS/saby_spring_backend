@@ -1,6 +1,7 @@
 package com.jats.savy.savy.entity.kidinformation;
 
 import com.jats.savy.savy.entity.reservation.Reservation;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 @Table(name = "kid_information_tbl")
