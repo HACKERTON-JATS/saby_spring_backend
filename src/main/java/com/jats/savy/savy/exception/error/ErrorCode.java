@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ErrorCode {
     USER_NOT_FOUND(404, "user not found"),
+    RESERVATION_NOT_FOUND(404, "reservation not found"),
     INVALID_TOKEN(401, "invalid token");
 
     private final Integer code;
