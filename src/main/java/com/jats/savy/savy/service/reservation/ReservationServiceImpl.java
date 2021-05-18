@@ -1,6 +1,5 @@
 package com.jats.savy.savy.service.reservation;
 
-import com.jats.savy.savy.entity.kidinformation.KidInformationRepository;
 import com.jats.savy.savy.entity.reservation.Reservation;
 import com.jats.savy.savy.entity.reservation.ReservationRepository;
 import com.jats.savy.savy.exception.ReservationNotFoundException;

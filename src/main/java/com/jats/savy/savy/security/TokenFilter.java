@@ -1,5 +1,6 @@
 package com.jats.savy.savy.security;
 
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -16,7 +17,7 @@ public class TokenFilter extends OncePerRequestFilter {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
         String token = jwtTokenProvider.extractToken(request);
 
         if(token != null && jwtTokenProvider.validateToken(token)) {
@@ -26,4 +27,5 @@ public class TokenFilter extends OncePerRequestFilter {
 
         filterChain.doFilter(request, response);
     }
+
 }

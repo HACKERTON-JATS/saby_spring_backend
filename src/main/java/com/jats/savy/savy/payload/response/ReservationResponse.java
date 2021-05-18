@@ -1,5 +1,6 @@
 package com.jats.savy.savy.payload.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.jats.savy.savy.entity.reservation.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +21,10 @@ public class ReservationResponse {
     @DateTimeFormat(pattern = "yyyy-MM-dd`T`hh:mm:SS")
     private LocalDateTime time;
 
+    @JsonProperty(value = "isTake")
     private boolean isTake;
 
+    @JsonProperty(value = "isReservation")
     private boolean isReservation;
 
     public static ReservationResponse of(Reservation reservation) {

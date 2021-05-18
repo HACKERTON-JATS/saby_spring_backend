@@ -12,7 +12,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
@@ -40,8 +39,8 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String extractToken(ServletRequest request) {
-        String bearer = ((HttpServletRequest)request).getHeader(HEADER);
+    public String extractToken(HttpServletRequest request) {
+        String bearer = request.getHeader(HEADER);
 
         if (bearer != null && bearer.startsWith(PREFIX))
             return bearer.substring(7);
@@ -50,15 +49,7 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token) {
         try {
-            return getBody(token).getExpiration().before(new Date());
-        } catch (Exception e) {
-            throw new InvalidTokenException();
-        }
-    }
-
-    private String getId(String token) {
-        try {
-            return getBody(token).getSubject();
+            return getBody(token).getExpiration().after(new Date());
         } catch (Exception e) {
             throw new InvalidTokenException();
         }
@@ -67,6 +58,14 @@ public class JwtTokenProvider {
     public Authentication getAuthentication(String token) {
         AuthDetails authDetails = authDetailsService.loadUserByUsername(getId(token));
         return new UsernamePasswordAuthenticationToken(authDetails, "", authDetails.getAuthorities());
+    }
+
+    private String getId(String token) {
+        try {
+            return getBody(token).getSubject();
+        } catch (Exception e) {
+            throw new InvalidTokenException();
+        }
     }
 
     private Claims getBody(String token) {

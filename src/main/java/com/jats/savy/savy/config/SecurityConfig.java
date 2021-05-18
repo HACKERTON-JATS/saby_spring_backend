@@ -1,5 +1,8 @@
-package com.jats.savy.savy.security;
+package com.jats.savy.savy.config;
 
+import com.jats.savy.savy.security.JwtConfigurer;
+import com.jats.savy.savy.security.JwtTokenProvider;
+import com.jats.savy.savy.security.TokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -31,15 +35,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .csrf().disable()
                 .cors().disable()
                 .sessionManagement().disable()
-                .formLogin().disable()
                 .authorizeRequests()
-                    .antMatchers("/admin/auth").permitAll()
-                    .anyRequest().authenticated()
-                .and()
-                    .logout()
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/auth").and()
-                .apply(new JwtConfigurer(jwtTokenProvider));
+                .antMatchers("/admin/auth").permitAll()
+                .anyRequest().authenticated().and()
+                .addFilterBefore(new TokenFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
@@ -48,7 +47,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .allowedOrigins("*")
                 .allowedMethods("*");
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

@@ -1,6 +1,7 @@
 package com.jats.savy.savy.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jats.savy.savy.SavyApplication;
 import com.jats.savy.savy.entity.admin.Admin;
 import com.jats.savy.savy.entity.admin.AdminRepository;
 import com.jats.savy.savy.payload.response.AuthResponse;
@@ -21,11 +22,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@SpringBootTest(classes = SavyApplication.class)
 public class AuthControllerTest {
 
     @Autowired

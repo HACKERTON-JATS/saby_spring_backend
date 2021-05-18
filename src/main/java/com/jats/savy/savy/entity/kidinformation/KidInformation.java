@@ -22,7 +22,7 @@ public class KidInformation {
     private Long reservationId;
 
     @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
