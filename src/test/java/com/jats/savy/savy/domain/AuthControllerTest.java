@@ -47,7 +47,9 @@ public class AuthControllerTest {
                 .webAppContextSetup(context)
                 .build();
 
-        adminRepository.save(new Admin("code"));
+        adminRepository.save(Admin.builder()
+                .code("code")
+                .build());
     }
 
     @AfterEach

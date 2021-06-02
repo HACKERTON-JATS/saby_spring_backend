@@ -1,6 +1,7 @@
 package com.jats.savy.savy.entity.reservation;
 
 import com.jats.savy.savy.entity.kidinformation.KidInformation;
+import com.jats.savy.savy.entity.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -34,4 +35,8 @@ public class Reservation {
 
     @OneToOne(mappedBy = "reservation", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     private KidInformation kidInformation;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 }
