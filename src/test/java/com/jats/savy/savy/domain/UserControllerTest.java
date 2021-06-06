@@ -1,22 +1,15 @@
 package com.jats.savy.savy.domain;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.jats.savy.savy.SavyApplication;
 import com.jats.savy.savy.entity.admin.Admin;
 import com.jats.savy.savy.entity.admin.AdminRepository;
 import com.jats.savy.savy.entity.chat.Chat;
 import com.jats.savy.savy.entity.chat.ChatRepository;
-import com.jats.savy.savy.entity.kidinformation.KidInformation;
-import com.jats.savy.savy.entity.kidinformation.KidInformationRepository;
-import com.jats.savy.savy.entity.reservation.Reservation;
-import com.jats.savy.savy.entity.reservation.ReservationRepository;
 import com.jats.savy.savy.entity.room.Room;
 import com.jats.savy.savy.entity.room.RoomRepository;
 import com.jats.savy.savy.entity.user.User;
 import com.jats.savy.savy.entity.user.UserRepository;
-import com.jats.savy.savy.payload.response.ReservationList;
-import com.jats.savy.savy.payload.response.ReservationResponse;
 import com.jats.savy.savy.payload.response.UserListResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -129,8 +122,8 @@ public class UserControllerTest {
         Assertions.assertEquals(response.getUserContentResponses().get(0).getUserEmail(), "test");
     }
 
-    private Chat createChat(String message) {
-        return chatRepository.save(
+    private void createChat(String message) {
+        chatRepository.save(
                 Chat.builder()
                         .message(message)
                         .room(room)

@@ -48,6 +48,12 @@ dependencies {
 
 	// token
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
+	// Spring Cloud. it load configuration from bootstrap.yml faster than application.yml
+	implementation 'org.springframework.cloud:spring-cloud-context:2.2.6.RELEASE'
+
+	// Spring cloud aws secret manager
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws-secrets-manager-config:2.2.6.RELEASE'
 }
 
 test {
