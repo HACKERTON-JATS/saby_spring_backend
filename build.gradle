@@ -47,7 +47,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
 	// token
-	implementation 'io.jsonwebtoken:jjwt:0.9.1'x
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 }
 
 test {
