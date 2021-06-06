@@ -13,9 +13,10 @@ spring:
       pageable:
         max-page-size: 100
         default-page-size: 20
-
 auth:
   jwt:
     secret: secret
     exp:
       access: 1000000
+server:
+  port: 8006
