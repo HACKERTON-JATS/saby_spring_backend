@@ -2,7 +2,7 @@ spring:
   datasource:
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-    url: jdbc:mysql://${DB_ENDPOINT}:3306/SABY
+    url: jdbc:mysql://${DB_ENDPOINT}:3306/SABY?characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
