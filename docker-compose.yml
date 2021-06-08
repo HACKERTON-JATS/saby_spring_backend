@@ -11,6 +11,8 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_ENDPOINT=${DB_ENDPOINT}
+      - SABY_SECRET=${SABY_SECRET}
+      - SABY_ACCESS_EXP=${SABY_ACCESS_EXP}
     volumes:
       - /home/hong/projects/user_backend_v2/log:/logs/*.log
     env_file:
