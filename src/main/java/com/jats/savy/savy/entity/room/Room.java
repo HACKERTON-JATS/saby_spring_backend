@@ -30,7 +30,7 @@ public class Room {
     @JoinColumn(name = "admin_code")
     private Admin admin;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true, mappedBy = "room")
     private List<Chat> chats;
 
 }
