@@ -6,8 +6,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
-    hibernate:
-      ddl-auto: update
   data:
     web:
       pageable:
@@ -15,8 +13,8 @@ spring:
         default-page-size: 20
 auth:
   jwt:
-    secret: secret
+    secret: ${SABY_SECRET}
     exp:
-      access: 1000000
+      access: ${SABY_ACCESS_EXP}
 server:
   port: 8006

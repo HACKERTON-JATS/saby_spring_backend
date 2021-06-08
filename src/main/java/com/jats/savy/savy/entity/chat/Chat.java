@@ -28,6 +28,7 @@ public class Chat {
     private LocalDateTime createdAt;
 
     private Boolean isAdmin;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
