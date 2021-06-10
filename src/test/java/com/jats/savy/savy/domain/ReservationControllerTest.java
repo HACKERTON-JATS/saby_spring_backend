@@ -7,6 +7,8 @@ import com.jats.savy.savy.entity.kidinformation.KidInformation;
 import com.jats.savy.savy.entity.kidinformation.KidInformationRepository;
 import com.jats.savy.savy.entity.reservation.Reservation;
 import com.jats.savy.savy.entity.reservation.ReservationRepository;
+import com.jats.savy.savy.entity.user.User;
+import com.jats.savy.savy.entity.user.UserRepository;
 import com.jats.savy.savy.payload.response.ReservationList;
 import com.jats.savy.savy.payload.response.ReservationResponse;
 import org.junit.jupiter.api.AfterEach;
@@ -44,9 +46,14 @@ public class ReservationControllerTest {
     private KidInformationRepository kidInformationRepository;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     private MockMvc mvc;
+
+    private User user;
 
     private Reservation success;
 
@@ -55,7 +62,13 @@ public class ReservationControllerTest {
         this.mvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .build();
-
+        user = userRepository.save(
+                User.builder()
+                        .userId("idid")
+                        .password("password")
+                        .nickname("nickname")
+                        .build()
+        );
         success = createReservation(true, true, "request11");
         createReservation(false, false, "request22");
     }
@@ -97,6 +110,7 @@ public class ReservationControllerTest {
                 .isReservation(isReservation)
                 .isTake(isTake)
                 .time(LocalDateTime.now().plusDays(2))
+                .user(user)
                 .build();
 
         kidInformationRepository.save(
