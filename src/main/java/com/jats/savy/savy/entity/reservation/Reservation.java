@@ -39,4 +39,8 @@ public class Reservation {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void updateIsTaken() {
+        this.isTake = true;
+    }
 }

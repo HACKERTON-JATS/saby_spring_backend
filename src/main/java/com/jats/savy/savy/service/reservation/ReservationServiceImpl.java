@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.stream.Collectors;
 
@@ -34,5 +35,13 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationRepository.findById(reservationId)
                 .map(ReservationInfo::of)
                 .orElseThrow(ReservationNotFoundException::new);
+    }
+
+    @Override
+    @Transactional
+    public void updateIsTaken(Long reservationId) {
+        reservationRepository.findById(reservationId)
+                .orElseThrow(ReservationNotFoundException::new)
+                .updateIsTaken();
     }
 }

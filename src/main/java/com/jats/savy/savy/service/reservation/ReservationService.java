@@ -8,4 +8,6 @@ public interface ReservationService {
     ReservationList getReservationList(Pageable pageable);
 
     ReservationInfo getReservationInfo(Long reservationId);
+
+    void updateIsTaken(Long reservationId);
 }
