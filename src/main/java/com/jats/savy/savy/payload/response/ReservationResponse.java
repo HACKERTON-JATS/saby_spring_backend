@@ -27,12 +27,15 @@ public class ReservationResponse {
     @JsonProperty(value = "isReservation")
     private boolean isReservation;
 
+    private String userName;
+
     public static ReservationResponse of(Reservation reservation) {
         return ReservationResponse.builder()
                 .id(reservation.getId())
                 .time(reservation.getTime())
                 .isTake(reservation.getIsTake())
                 .isReservation(reservation.getIsReservation())
+                .userName(reservation.getUser().getNickname())
                 .build();
     }
 
