@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/admin/reservation")
+@CrossOrigin(origins = "*")
 public class ReservationController {
 
     private final ReservationService reservationService;

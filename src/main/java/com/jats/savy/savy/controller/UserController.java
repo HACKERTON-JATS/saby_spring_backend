@@ -4,11 +4,13 @@ import com.jats.savy.savy.payload.response.UserListResponse;
 import com.jats.savy.savy.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
     private final UserService userService;
 
