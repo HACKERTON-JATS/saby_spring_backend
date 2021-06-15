@@ -90,7 +90,7 @@ public class ReservationControllerTest {
         ReservationList reservationList = objectMapper.registerModule(new JavaTimeModule()).readValue(result.getResponse().getContentAsString(), ReservationList.class);
 
         Assertions.assertEquals(reservationList.getTotalPages(), 1);
-        Assertions.assertEquals(reservationList.getReservationResponses().size(), 2);
+        Assertions.assertEquals(reservationList.getReservationInfos().size(), 2);
     }
 
     @Test
