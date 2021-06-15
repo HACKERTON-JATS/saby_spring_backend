@@ -25,7 +25,9 @@ public class ReservationServiceImpl implements ReservationService {
         Page<Reservation> reservations = reservationRepository.findAllBy(pageable);
 
         return ReservationList.builder()
-                .reservationResponses(reservations.getContent().stream().map(ReservationResponse::of).collect(Collectors.toList()))
+                .reservationInfos(reservations
+                        .getContent().stream()
+                        .map(ReservationInfo::of).collect(Collectors.toList()))
                 .totalPages(reservations.getTotalPages())
                 .build();
     }

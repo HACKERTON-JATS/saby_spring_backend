@@ -15,5 +15,5 @@ public class ReservationList {
 
     private Integer totalPages;
 
-    private List<ReservationResponse> reservationResponses;
+    private List<ReservationInfo> reservationInfos;
 }
