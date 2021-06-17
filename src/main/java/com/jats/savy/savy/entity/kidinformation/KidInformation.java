@@ -1,5 +1,6 @@
 package com.jats.savy.savy.entity.kidinformation;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.jats.savy.savy.entity.reservation.Reservation;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,7 @@ public class KidInformation {
     @MapsId
     @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "reservation_id")
+    @JsonManagedReference
     private Reservation reservation;
 
     @Column(nullable = false)

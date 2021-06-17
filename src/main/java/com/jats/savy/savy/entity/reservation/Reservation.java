@@ -1,5 +1,6 @@
 package com.jats.savy.savy.entity.reservation;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.jats.savy.savy.entity.kidinformation.KidInformation;
 import com.jats.savy.savy.entity.user.User;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class Reservation {
     private Boolean isReservation;
 
     @OneToOne(mappedBy = "reservation", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
+    @JsonBackReference
     private KidInformation kidInformation;
 
     @ManyToOne(fetch = FetchType.LAZY)
