@@ -6,10 +6,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     database: mysql
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-    show-sql: true
   data:
     web:
       pageable:

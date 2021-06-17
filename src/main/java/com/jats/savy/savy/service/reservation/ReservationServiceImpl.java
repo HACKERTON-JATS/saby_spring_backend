@@ -23,7 +23,6 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationList getReservationList(Pageable pageable) {
         Page<Reservation> reservations = reservationRepository.findAllBy(pageable);
-        System.out.println(reservations.getTotalElements());
 
         return ReservationList.builder()
                 .reservationInfos(reservations
