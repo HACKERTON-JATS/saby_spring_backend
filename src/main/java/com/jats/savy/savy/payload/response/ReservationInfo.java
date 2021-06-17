@@ -20,6 +20,8 @@ public class ReservationInfo {
 
     private boolean isReservation;
 
+    private boolean isTake;
+
     private LocalDateTime birthDate;
 
     private String kidName;
@@ -38,6 +40,7 @@ public class ReservationInfo {
                 .birthDate(reservation.getKidInformation().getBirthDate())
                 .fetusName(reservation.getKidInformation().getFetusName())
                 .time(reservation.getTime())
+                .isTake(reservation.getIsTake())
                 .kidName(reservation.getKidInformation().getKidName())
                 .request(reservation.getKidInformation().getRequest())
                 .caution(reservation.getKidInformation().getCaution())
