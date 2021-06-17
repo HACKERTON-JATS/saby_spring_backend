@@ -23,11 +23,11 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationList getReservationList(Pageable pageable) {
         Page<Reservation> reservations = reservationRepository.findAllBy(pageable);
+        System.out.println(reservations.getTotalElements());
 
         return ReservationList.builder()
                 .reservationInfos(reservations
-                        .getContent().stream()
-                        .map(ReservationInfo::of).collect(Collectors.toList()))
+                        .get().map(ReservationInfo::of).collect(Collectors.toList()))
                 .totalPages(reservations.getTotalPages())
                 .build();
     }

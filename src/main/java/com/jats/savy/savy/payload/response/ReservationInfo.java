@@ -35,12 +35,14 @@ public class ReservationInfo {
     private String giveLater;
 
     public static ReservationInfo of(Reservation reservation) {
+        System.out.println();
         System.out.println(reservation.getIsReservation());
         System.out.println(reservation.getKidInformation().getBirthDate());
         System.out.println(reservation.getKidInformation().getFetusName());
         System.out.println(reservation.getKidInformation().getKidName());
         System.out.println(reservation.getTime());
         System.out.println(reservation.getIsTake());
+        System.out.println();
         return ReservationInfo.builder()
                 .isReservation(reservation.getIsReservation())
                 .birthDate(reservation.getKidInformation().getBirthDate())
