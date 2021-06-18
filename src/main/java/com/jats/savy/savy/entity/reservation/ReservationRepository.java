@@ -5,5 +5,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
-    Page<Reservation> findAllBy(Pageable pageable);
+    Page<Reservation> findAllByOrderByTimeDesc(Pageable pageable);
 }

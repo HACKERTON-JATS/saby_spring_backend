@@ -10,7 +10,7 @@ spring:
     web:
       pageable:
         max-page-size: 100
-        default-page-size: 2
+        default-page-size: 6
 auth:
   jwt:
     secret: ${SABY_SECRET}

@@ -22,7 +22,7 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public ReservationList getReservationList(Pageable pageable) {
-        Page<Reservation> reservations = reservationRepository.findAllBy(pageable);
+        Page<Reservation> reservations = reservationRepository.findAllByOrderByTimeDesc(pageable);
 
         return ReservationList.builder()
                 .reservationInfos(reservations
