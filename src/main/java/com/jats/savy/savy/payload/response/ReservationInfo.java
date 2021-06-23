@@ -34,6 +34,8 @@ public class ReservationInfo {
 
     private String giveLater;
 
+    private String nickName;
+
     public static ReservationInfo of(Reservation reservation) {
         return ReservationInfo.builder()
                 .isReservation(reservation.getIsReservation())
@@ -45,6 +47,7 @@ public class ReservationInfo {
                 .request(reservation.getKidInformation().getRequest())
                 .caution(reservation.getKidInformation().getCaution())
                 .giveLater(reservation.getKidInformation().getGiveLater())
+                .nickName(reservation.getUser().getNickname())
                 .build();
     }
 
